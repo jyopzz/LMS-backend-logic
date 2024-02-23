@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Module Completion | {{dname}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+
+        <h1>{{dname}}</h1>
+        <h2>Module Completion status</h2>
+        
+        <a href="{% url 'edash' %}">dashboard</a><br>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Domain</th>
+                <th>Account Status</th>
+                {% for m in modules %}
+                    <th>{{m.name}}</th>
+                {% endfor %}
+            </tr>
+    
+            {% for intern, status_dict in completion_status.items %}
+                <tr>
+                    <td>{{ intern.username }}</td>
+                    <td>{{ intern.email }}</td>
+                    <td>{{ intern.phone }}</td>
+                    <td>{{ intern.domain }}</td>
+                    <td>
+                        {% if intern.user.is_active %}
+                            Active
+                        {% else %}
+                            Deactive
+                        {% endif %}
+                    </td>
+                    
+                    {% for module, completion_status in status_dict.items %}
+                        <td>
+                            {% if completion_status %}
+                                
+                                <a href="{% url 'answer_detail' intern.id module.id %}" target="_blank">Completed</a>
+                            {% else %}
+                                Not Completed
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    
+    </body>
+</html>

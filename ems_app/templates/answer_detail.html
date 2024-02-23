@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Detail</title>
+</head>
+<body>
+    <h1>Answer Detail</h1>
+    
+    <p><strong>Intern:</strong> {{ answer.intern_user.username }}</p>
+    <p><strong>Module:</strong> {{ answer.module.name }}</p>
+    <p><strong>Answer:</strong> {{ answer.answer_text }} </p>
+    <p><strong>Submission Date:</strong> {{ answer.submission_date }}</p>
+    
+    <a href="{% url 'modulecompletionstatus' dname=answer.module.domain.name %}">Back to Module Completion Status</a>
+</body>
+</html>

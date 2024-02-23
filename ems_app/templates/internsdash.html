@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags and title remain the same -->
+</head>
+<body>
+    <h1>Interns Dash</h1>
+    Welcome: {{ intern_user.username}}<br>
+    Domain: {{ intern_user.domain }}<br>
+    Phone: {{ intern_user.phone }}<br>
+    Email: {{ intern_user.email }}<br>
+    <br>
+    <a href="{% url 'ineditprofile' id=intern_user.id %}"> Edit profile</a>
+    <br>
+    <a href="{% url 'ilogout' %}">logout</a>
+    <br>
+    
+    <br>
+    
+
+    {% for m in modules %}
+        {% if m.id in completed_modules %}
+            <a href="{% url 'answersubmit' moduleid=m.id %}">
+                <span>{{ m.name }}</span> <span>{{ m.topic }}</span>
+            </a>
+            (Completed)
+        {% elif forloop.counter0 <= no %}
+            <a href="{% url 'answersubmit' moduleid=m.id %}">
+                <span>{{ m.name }}</span> <span>{{ m.topic }}</span>
+            </a>
+            (Active)
+        {% else %}
+            <span>{{ m.name }}</span> <span>{{ m.topic }}</span>
+            (Not Completed - Locked)
+        {% endif %}
+        <br>
+    {% endfor %}
+
+    
+</body>
+</html>

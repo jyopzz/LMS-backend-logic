@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{dname}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <h1>{{dname}}</h1>
+        
+        <a href="{% url 'edash' %}">dashboard</a><br>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Domain</th>
+                <th>Account Status</th>
+                <th>Activate/Deactivate</th>
+                
+            </tr>
+    
+            
+                {% for i in intern  %}
+                <tr>
+                    <td>{{i.username}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.phone}}</td>
+                    <td>{{i.domain}}</td>
+                    <td>
+                        {% if i.user.is_active %}
+                        active
+                    {% else %}
+                        deactive
+                    {% endif %}
+                    </td>
+                    <td>
+                        {% if i.user.is_active %}
+                        <a href="{% url 'deactivate_account' i.user.id %}">Deactivate Account</a>
+                    {% else %}
+                        <a href="{% url 'activate_account' i.user.id %}">Activate Account</a>
+                    {% endif %}
+                    </td>
+
+                    
+                </tr>
+                  
+                {% endfor %}
+            
+            
+        </table>
+    
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intern List</title>
+</head>
+<body>
+    <h1>Intern List</h1>
+    <br>
+        <a href="{% url 'edash' %}"> dashboard</a><br><br>
+    
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Domain</th>
+            <th>Edit Domain</th>
+        </tr>
+
+        {% for i in internlist %}
+            <tr>
+                <td>{{ i.username }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.domain }}</td>
+                <td><a href="{% url 'editdomain' i.id %}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+</body>
+
+</html>

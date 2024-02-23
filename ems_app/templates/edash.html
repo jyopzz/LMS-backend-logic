@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edash</title>
+</head>
+<body>
+    <h1>Employee dash</h1>
+    <h3>Hello {{ user.name }}</h3>
+    <a href="{% url 'elogout' %}">logout</a>
+    <div>
+        <h6>Create Domain</h6>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Name:<input type="text" name="domain" >
+            <input type="submit" name="submit" value="submit">
+        </form>
+    </div>
+    <br><br>
+    Create module for domains :
+    <a href="{% url 'createmodule' %}">Create Module</a>
+    <br><br>
+     Module list:
+     {% for d in domain %}
+     <a href="{% url 'modulelist' dname=d.name %}">{{d.name}}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+     {% endfor %}
+    <br><br>
+   
+    <a href="{% url 'internlist' %}">->Internlist</a><br><br>
+   Intern list for each domain :
+    {% for d in domain %}
+    <a href="{% url 'domaininternlist' dname=d.name %}">{{d.name}}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    {% endfor %}
+    <br><br>
+    Module completion status for each domain :
+    {% for d in domain %}
+    <a href="{% url 'modulecompletionstatus' dname=d.name %}">{{d.name}}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    {% endfor %}
+    <br><br>
+    Profile Settings: <a href="{% url 'empedit' id=user.id %}">Edit</a>
+    
+</body>
+</html>

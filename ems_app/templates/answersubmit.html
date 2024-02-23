@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer submit</title>
+</head>
+<body>
+    <h1>Answer submit </h1>
+    <h3>{{module.name}}</h3>
+    <h4>{{module.topic}}</h4>
+    <h5>{{module.question}}</h5>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="answer" id="" cols="30" rows="5" placeholder="write the answer"></textarea> <br>
+        <input type="submit" value="submit">
+    </form>
+
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{dname}}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        <h1>{{dname}}</h1>
+        
+        <a href="{% url 'edash' %}">dashboard</a><br>
+        <table border="1">
+            <tr>
+                <th>Module Name</th>
+                <th>Topic</th>
+                <th>Question</th>
+                
+                <th>Update</th>
+                <th>Delete</th>
+                
+            </tr>
+    
+            
+                {% for m in module  %}
+                <tr>
+                    <td>{{m.name}}</td>
+                    <td>{{m.topic}}</td>
+                    <td>{{m.question}}</td>                
+                    <td><a href="{% url 'updatemodule' m.id %}">Update</a></td>
+                    <td><a href="{% url 'deletemodule' m.id %}">Delete</a></td>
+      
+                </tr>
+                  
+                {% endfor %}
+            
+            
+        </table>
+    
+    </body>
+</html>

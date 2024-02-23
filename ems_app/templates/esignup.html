@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esignup</title>
+
+</head>
+<body>
+
+    <h1>Employee Signup</h1>
+    {% if messages %}
+        <p>
+            {% for m in messages  %}
+                 {{m}}
+              
+            {% endfor %}
+        </p>
+          
+        {% endif %}
+    
+    <form action=""method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        Username:<input type="text" name="username" placeholder="username">
+        email:<input type="email" name="email" placeholder="email">
+        phone:<input type="text" name="phone" placeholder="phone">
+        password:<input type="password" name="password" placeholder="password">
+        <input type="submit" value="submit">
+        
+    </form>
+    
+</body>
+</html>

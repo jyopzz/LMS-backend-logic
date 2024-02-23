@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Domain</title>
+</head>
+<body>
+    <h1>Edit Domain</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        Name:<label >{{intern.name}}</label><br>
+        Email:<label >{{intern.email}}</label><br>
+        Phone:<label >{{intern.phone}}</label><br>
+        Domain:<label >{{intern.domain}}</label><br>
+          
+        
+        <label for="new_domain">Select New Domain:</label>
+        <select id="new_domain" name="new_domain" required>
+             {% for d in domain %}
+                <option value="{{ d.name }}">{{ d.name }}</option>
+            {% endfor %} 
+        </select>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
